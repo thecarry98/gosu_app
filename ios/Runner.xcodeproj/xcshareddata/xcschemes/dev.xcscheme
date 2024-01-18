@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1300"
+   version = "1.7">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# &#x110;&#x1ecb;nh ngh&#x129;a h&#xe0;m entry_decode &#x111;&#x1ec3; gi&#x1ea3;i m&#xe3; base64&#10;function entry_decode() {&#10;  echo &quot;${*}&quot; | base64 --decode;&#10;}&#10;&#10;# Ki&#x1ec3;m tra xem bi&#x1ebf;n m&#xf4;i tr&#x1b0;&#x1edd;ng DART_DEFINES c&#xf3; t&#x1ed3;n t&#x1ea1;i kh&#xf4;ng&#10;if [ -n &quot;$DART_DEFINES&quot; ]; then&#10;  # T&#xe1;ch chu&#x1ed7;i DART_DEFINES th&#xe0;nh m&#x1ea3;ng, s&#x1eed; d&#x1ee5;ng d&#x1ea5;u ph&#x1ea9;y l&#xe0;m delimiter&#10;  IFS=&apos;,&apos; read -r -a define_items &lt;&lt;&lt; &quot;$DART_DEFINES&quot;&#10;&#10;  # Gi&#x1ea3;i m&#xe3; t&#x1eeb;ng ph&#x1ea7;n t&#x1eed; trong m&#x1ea3;ng&#10;  for index in &quot;${!define_items[@]}&quot;&#10;  do&#10;    define_items[$index]=$(entry_decode &quot;${define_items[$index]}&quot;)&#10;  done&#10;&#10;  # L&#x1ea5;y gi&#xe1; tr&#x1ecb; c&#x1ee7;a FLAVOR t&#x1eeb; .env&#10;  FLAVOR=$(printf &quot;%s\n&quot; &quot;${define_items[@]}&quot; | grep &apos;^FLAVOR=&apos; | sed &apos;s/^FLAVOR=//&apos;)&#10;&#10;  # T&#x1ea1;o t&#x1ec7;p .xcconfig v&#x1edb;i gi&#xe1; tr&#x1ecb; FLAVOR&#10;  printf &quot;FLAVOR=%s\n&quot; &quot;$FLAVOR&quot; &gt; ${SRCROOT}/Flutter/SSM.xcconfig&#10;fi&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "97C146ED1CF9000F007C117D"
+                     BuildableName = "Runner.app"
+                     BlueprintName = "Runner"
+                     ReferencedContainer = "container:Runner.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "97C146ED1CF9000F007C117D"
+               BuildableName = "Runner.app"
+               BlueprintName = "Runner"
+               ReferencedContainer = "container:Runner.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug-dev"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "97C146ED1CF9000F007C117D"
+            BuildableName = "Runner.app"
+            BlueprintName = "Runner"
+            ReferencedContainer = "container:Runner.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <Testables>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug-dev"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "97C146ED1CF9000F007C117D"
+            BuildableName = "Runner.app"
+            BlueprintName = "Runner"
+            ReferencedContainer = "container:Runner.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Debug-dev"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "97C146ED1CF9000F007C117D"
+            BuildableName = "Runner.app"
+            BlueprintName = "Runner"
+            ReferencedContainer = "container:Runner.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Release-dev">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release-dev"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>
